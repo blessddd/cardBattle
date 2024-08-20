@@ -1,0 +1,145 @@
+* {
+    font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+    color: #222;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.menu-nav {
+    background-color: #670a0a;
+    padding: 15px 10px;
+}
+
+.menu-nav__title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0px 10px;
+    text-decoration: none;
+}
+
+.games-section, .apps-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 30px;
+}
+
+.games-section__articles, .apps-section__articles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+
+.games-section__title, .apps-section__title {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.games-section__game, .apps-section__app {
+    border: 1px solid #9998;
+    border-radius: 0.3rem;
+    width: 320px;
+    min-width: 270px;
+    max-width: 1000px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2; /* Permite que los elementos crezcan y ocupen el tamaño que sobra en el contenedor */
+    flex-shrink: 2; /* Permite que los elementos se achiquen para que entren en el contenedor */
+    flex-basis: auto; /* Tamaño inicial de los elementos */
+    justify-content: flex-end;
+    position: relative;
+}
+
+.games-section__game:hover, .apps-section__app:hover {
+    /* width: 290px; */
+    box-shadow: 0px 3px 10px #4449;
+    transition: 0.2s;
+}
+
+.game-cover, .app-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.game-information, .app-information {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    background-color: #6667;
+    height: 145px;
+    overflow:auto;
+    z-index: 10;
+}
+
+.game-name, .app-name {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 5px 20px;
+    padding-left: 20px;
+    padding-bottom: 0px;
+    text-shadow: 2px 3px 4px #000;
+    color: #f8f8f8;
+}
+
+.game-description, .app-description {
+    font-size: 15px;
+    padding: 0px 20px;
+    padding-bottom: 5px;
+    text-overflow: ellipsis;
+    color: #f8f8f8;
+    text-shadow: 2px 1px 3px #000;
+}
+
+.game-button, .app-button {
+    border-style: none;
+    padding: 0.3rem 0px;
+    margin: 0px 0px 15px 20px;
+    width: 110px;
+    margin-bottom: 10px;
+    border-radius: 0.3em;
+    border: 1px solid #9995;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #dc2626;
+    color: #fff;
+}
+
+.game-button:hover, .app-button:hover{
+    background-color: #ef4444;
+}
+
+.page-footer {
+    flex-shrink: 0;
+    text-align: center;
+    background-color: #670a0a;
+}
+
+.page-footer-title {
+    color: #fff;
+    padding: 10px 0px;
+    font-size: 16px;
+}
