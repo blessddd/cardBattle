@@ -25,7 +25,15 @@ main {
     background-color: #670a0a;
     padding: 15px 10px;
 }
+.boton-nosotros{
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0px 10px;
+    text-decoration: none;
+    float: right;
 
+}
 .menu-nav__title {
     color: #fff;
     font-weight: 700;
