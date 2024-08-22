@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BlackJack - Card battle!!</title>
+    <title>BlackJack</title>
     <meta charset="UTF-8">
     <meta name="author" content="blessddd">
     <meta name="robots" content="index, follow">
@@ -34,6 +34,7 @@
                 <hr class="line"/>
             </article>
         </section>
+        
         <section class="game-intro-container">
             <article class="game-intro">
                 <button class="start-button">
@@ -41,15 +42,22 @@
                 </button>
             </article>
         </section>
+
         <section class="game-section-container">
             <section class="game-section">
                 <aside class="deck-container">
+                    <header>
+                        <h2>Dealer:</h2>
+                    </header>
                     <div class="dealer-deck player-deck"></div>
                     <footer>
                         <span class="game-counter dealer-counter"></span>
                     </footer>
                 </aside>
                 <aside class="deck-container">
+                    <header>
+                        <h2>Jugador:</h2>
+                    </header>
                     <div class="user-deck player-deck"></div>
                     <footer>
                         <span class="game-counter user-counter"></span>
@@ -57,10 +65,18 @@
                 </aside>
             </section>
             <section class="game-buttons">
-                <button class="game-button hit">Pedir</button>
-                <button class="game-button stand">Plantarse</button>
+                <button class="game-button hit">
+                    Pedir
+                </button>
+                <button class="game-button stand">
+                    Plantarse
+                </button>
+                <button class="game-button play-again" type="button">
+                    Jugar de nuevo
+                </button>
             </section>
         </section>
+
         <section></section>
     </main>
     <footer class="page-footer">
@@ -68,6 +84,7 @@
             Todos los derechos reservados - blessddd's Inc
         </h3>
     </footer>
+    <script src="../../src/index.js"></script>
     <script src="../../src/js/blackjack.js"></script>
 </body>
 </html>

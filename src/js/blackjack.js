@@ -1,22 +1,12 @@
-const   dealerDeck  = document.querySelector(".dealer-deck");
-const    userDeck   = document.querySelector(".user-deck");
-const   hitButton   = document.querySelector(".hit");
-const  standButton  = document.querySelector(".stand");
-const dealerCounter = document.querySelector(".dealer-counter");
-const  userCounter  = document.querySelector(".user-counter");
-const  startButton  = document.querySelector(".start-button");
-const      line     = document.querySelector(".line");
-const  gameSection  = document.querySelector(".game-section-container");
-const   gameIntro   = document.querySelector(".game-intro");
-const gameIntroContainer = document.querySelector(".game-intro-container");
-const inactiveGameSection = document.querySelector(".inactive-game");
+"use strict";
 
-startButton.addEventListener("click", () => {
-    gameIntroContainer.style.display = "none";
-    gameIntro.style.display   = "none";
-    gameSection.style.display = "block";
-    line.style.display = "block";
-});
+const   dealerDeck    = document.querySelector(".dealer-deck");
+const    userDeck     = document.querySelector(".user-deck");
+const    hitButton    = document.querySelector(".hit");
+const   standButton   = document.querySelector(".stand");
+const playAgainButton = document.querySelector(".play-again");
+const  dealerCounter  = document.querySelector(".dealer-counter");
+const   userCounter   = document.querySelector(".user-counter");
 
 const randomNumber = (max, min) => {
     return Math.floor(Math.random() * (max - min) + min);
@@ -28,16 +18,12 @@ class Card {
         this.player = player;
     }
     
-    getCardName() {
-        return this.card;
-    }
+    getCardName = () => this.card;
 
     addCard = (cardElement) => {
-        (
-            this.player === "dealer" ?  
+        this.player === "dealer" ?  
             dealerDeck.appendChild(cardElement) :
-            userDeck.appendChild(cardElement)
-        );
+            userDeck.appendChild(cardElement);
     }
 
     static shuffle = () => {
@@ -73,7 +59,7 @@ class Card {
 
 class Player {
     constructor(player, moneyAmount) {
-        this.player = player;
+        this.typePlayer = player;
         this.moneyAmount = moneyAmount;
         this.score = 0;
         this.deck = [];
@@ -110,9 +96,8 @@ class Player {
                 break;
         }
 
-        if(this.player == "user")
-            userCounter.textContent = this.score;
-        else 
+        this.typePlayer == "user" ?
+            userCounter.textContent = this.score : 
             dealerCounter.textContent = this.score;
     }
 
@@ -143,11 +128,11 @@ class BlackJack {
     }
 
     startGame = () => {
-        dealer.addCard(null, dealer.player);
-        dealer.addCard("BACK", dealer.player);
+        dealer.addCard(null, dealer.typePlayer);
+        dealer.addCard("BACK", dealer.typePlayer);
         
-        user.addCard(null, user.player);
-        user.addCard(null, user.player);
+        user.addCard(null, user.typePlayer);
+        user.addCard(null, user.typePlayer);
 
         if(user.getScore() == 21) {
             alert("BlackJack!!");
@@ -163,36 +148,32 @@ class BlackJack {
         this.winner = winner;
         this.loser  = (winner == "user" ? "dealer" : "user");
         alert(`Gana el ${this.winner}`);
-        
-        let playAgain = confirm("¿Quieres volver a jugar?");
-        if(playAgain) {
-            this.clearDeck();
-            startGame();
-        }
     }
 
     determineWinner = () => {
-        if(user.getScore() > dealer.getScore() || dealer.getScore() > 21) {
-            if(dealer.getScore() > 21) { 
+        if (
+            (user.getScore() > dealer.getScore() && user.getScore() <= 21) || 
+            dealer.getScore() > 21
+        ) {
+            if(dealer.getScore() > 21) 
                 alert("El dealer se paso de 21");
-            }
             this.endGame("user");
-        } else if(dealer.getScore() > user.getScore() || user.getScore() > 21) {
-            if(user.getScore() > 21) {
+        } else if (
+            (dealer.getScore() > user.getScore() && dealer.getScore() <= 21) || 
+            user.getScore() > 21
+        ) {
+            if(user.getScore() > 21) 
                 alert("Te pasaste de 21");
-            }
             this.endGame("dealer");
-        } else alert("Empate");
+        } else {
+            alert("Empate");
+            this.gameEnded = true;
+        }
     }
 
     hit = () => {
-        if(user.getScore() < 21) 
-            user.addCard(null, user.player);
-        
-        if(user.getScore() > 21) {
-            alert("Perdiste");
-            this.gameEnded = true;
-        }
+        if(user.getScore() < 21) user.addCard(null, user.typePlayer);
+        if(user.getScore() > 21) this.determineWinner();
     }
 
     stand = () => {
@@ -200,8 +181,8 @@ class BlackJack {
         if(lastDealerCard) lastDealerCard.remove();
 
         const dealNextCard = () => {
-            if (this.dealer.getScore() < 17) {
-                this.dealer.addCard(null, this.dealer.player);
+            if(this.dealer.getScore() < 17) {
+                dealer.addCard(null, dealer.typePlayer);
                 setTimeout(dealNextCard, 300);
             } else this.determineWinner();
         };
@@ -224,17 +205,21 @@ const startGame = () => {
 
 startGame();
 
-hitButton.addEventListener("click", () => {
-    if(!game.gameEnded) 
-        game.hit();
-    else 
-        alert("Juego terminado");
-});
+hitButton.addEventListener("click", () => 
+    !game.gameEnded ? 
+        game.hit() : 
+        alert("El juego ha terminado")
+);
 
-standButton.addEventListener("click", () => {
-    if(!game.gameEnded)
-        game.stand();
-    else 
-        alert("Juego terminado");
-});
+standButton.addEventListener("click", () => 
+    !game.gameEnded ? 
+        game.stand() : 
+        alert("El juego ha terminado")
+);
 
+playAgainButton.addEventListener("click", () => {
+    if(game.gameEnded) {
+        game.clearDeck();
+        startGame();
+    } else alert("El juego aún no ha terminado");
+});
