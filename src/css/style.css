@@ -98,7 +98,7 @@ main {
     padding: 5px 20px;
     padding-left: 20px;
     padding-bottom: 0px;
-    text-shadow: 2px 3px 15px #111;
+    text-shadow: 2px 3px 25px #111;
     color: #f8f8f8;
 }
 
@@ -108,7 +108,7 @@ main {
     padding-bottom: 5px;
     text-overflow: ellipsis;
     color: #f8f8f8;
-    text-shadow: 2px 1px 3px #000;
+    text-shadow: 2px 1px 15px #000;
 }
 
 .game-button, .app-button {

@@ -9,7 +9,7 @@ const  dealerCounter  = document.querySelector(".dealer-counter");
 const   userCounter   = document.querySelector(".user-counter");
 
 const randomNumber = (max, min) => {
-    return Math.floor(Math.random() * (max - min) + min);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 class Card {
@@ -128,6 +128,9 @@ class BlackJack {
     }
 
     startGame = () => {
+        hitButton.style.backgroundColor = "#670a0a";
+        standButton.style.backgroundColor = "#670a0a";
+
         dealer.addCard(null, dealer.typePlayer);
         dealer.addCard("BACK", dealer.typePlayer);
         
@@ -135,19 +138,27 @@ class BlackJack {
         user.addCard(null, user.typePlayer);
 
         if(user.getScore() == 21) {
-            alert("BlackJack!!");
-            alert("Gano el user");
+            alert("Ganó el jugador, obtuvo un BlackJack!!");
+            this.endGame("user");
         } else if(dealer.getScore() == 21) {
-            alert("BlackJack!!");
-            alert("Gano el dealer");
+            alert("Ganó el dealer, obtuvo un BlackJack!!");
+            this.endGame(dealer);
+        } else if(user.getScore() == 21 || dealer.getScore() == 21) {
+            alert("Empate, ambos jugadores obtuvieron BlackJack!!");
+            this.endGame("draw")
         }
     }
 
     endGame = (winner) => {
         this.gameEnded = true;
+        hitButton.style.backgroundColor = "#ccc";
+        standButton.style.backgroundColor = "#ccc";
+
+        if(winner == "draw") return;
+        
         this.winner = winner;
         this.loser  = (winner == "user" ? "dealer" : "user");
-        alert(`Gana el ${this.winner}`);
+        alert(`Ganó el ${this.winner}!!`);
     }
 
     determineWinner = () => {
@@ -156,24 +167,28 @@ class BlackJack {
             dealer.getScore() > 21
         ) {
             if(dealer.getScore() > 21) 
-                alert("El dealer se paso de 21");
+                alert("El dealer se pasó de 21");
             this.endGame("user");
         } else if (
             (dealer.getScore() > user.getScore() && dealer.getScore() <= 21) || 
             user.getScore() > 21
         ) {
             if(user.getScore() > 21) 
-                alert("Te pasaste de 21");
+                alert("Te pasaste de 21, ¡has perdido!");
             this.endGame("dealer");
         } else {
             alert("Empate");
-            this.gameEnded = true;
+            this.endGame("draw");
         }
+
     }
 
     hit = () => {
-        if(user.getScore() < 21) user.addCard(null, user.typePlayer);
-        if(user.getScore() > 21) this.determineWinner();
+        if(user.getScore() <= 21) {
+            user.addCard(null, user.typePlayer);
+            if(user.getScore() > 21) 
+                setTimeout(() => this.determineWinner(), 100);
+        }
     }
 
     stand = () => {
@@ -181,10 +196,16 @@ class BlackJack {
         if(lastDealerCard) lastDealerCard.remove();
 
         const dealNextCard = () => {
-            if(this.dealer.getScore() < 17) {
+            if(this.dealer.getScore() >= 17 || this.dealer.getScore() > this.user.getScore()) {
+                if(dealerDeck.childElementCount < 2) {
+                    dealer.addCard(null, dealer.typePlayer);
+                    setTimeout(() => this.determineWinner(), 100);
+                }
+                this.determineWinner();
+            } else {
                 dealer.addCard(null, dealer.typePlayer);
                 setTimeout(dealNextCard, 300);
-            } else this.determineWinner();
+            }
         };
 
         dealNextCard();
@@ -205,19 +226,20 @@ const startGame = () => {
 
 startGame();
 
-hitButton.addEventListener("click", () => 
+hitButton.addEventListener("click", () => { 
     !game.gameEnded ? 
         game.hit() : 
-        alert("El juego ha terminado")
-);
+        alert("El juego ha terminado");
+});
 
-standButton.addEventListener("click", () => 
+standButton.addEventListener("click", () => {
     !game.gameEnded ? 
         game.stand() : 
-        alert("El juego ha terminado")
-);
+        alert("El juego ha terminado");
+});
 
-playAgainButton.addEventListener("click", () => {
+playAgainButton.addEventListener("click", (event) => {
+    event.preventDefault();
     if(game.gameEnded) {
         game.clearDeck();
         startGame();
