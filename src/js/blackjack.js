@@ -128,8 +128,8 @@ class BlackJack {
     }
 
     startGame = () => {
-        hitButton.style.backgroundColor = "#670a0a";
-        standButton.style.backgroundColor = "#670a0a";
+        hitButton.classList.remove("disabled");
+        standButton.classList.remove("disabled"); 
 
         dealer.addCard(null, dealer.typePlayer);
         dealer.addCard("BACK", dealer.typePlayer);
@@ -151,8 +151,8 @@ class BlackJack {
 
     endGame = (winner) => {
         this.gameEnded = true;
-        hitButton.style.backgroundColor = "#ccc";
-        standButton.style.backgroundColor = "#ccc";
+        hitButton.classList.add("disabled");
+        standButton.classList.add("disabled");
 
         if(winner == "draw") return;
         
@@ -199,7 +199,7 @@ class BlackJack {
             if(this.dealer.getScore() >= 17 || this.dealer.getScore() > this.user.getScore()) {
                 if(dealerDeck.childElementCount < 2) {
                     dealer.addCard(null, dealer.typePlayer);
-                    setTimeout(() => this.determineWinner(), 100);
+                    setTimeout(() => this.determineWinner(), 300);
                 }
                 this.determineWinner();
             } else {

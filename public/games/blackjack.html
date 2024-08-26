@@ -7,7 +7,13 @@
     <meta name="robots" content="index, follow">
     <meta name="description" content="Cards games">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../src/css/blackjack.css">
+    <link rel="stylesheet" href="../../src/css/default-page-style.css">
+    <link rel="stylesheet" href="../../src/css/game-page.css">
+    <link rel="stylesheet" href="../../src/css/games/blackjack.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
 </head>
 <body>
     <header>
@@ -18,23 +24,56 @@
         </nav>
     </header>
     <main>
-        <section class="game-info-section">
-            <article>
-                <header>
-                    <h1 class="game-title">
-                        BlackJack
-                    </h1>
-                    <h2 class="game-subtitle">
-                        Developed by kevv
-                    </h2>
-                </header>
-                <p class="game-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet doloremque nemo ea laborum possimus quas praesentium delectus eligendi omnis, rerum nisi? Nam neque fugiat assumenda non dolore id atque vel!
-                </p>
-                <hr class="line"/>
-            </article>
+        <section>
+            <section class="game-information">
+                <article class="info-article">
+                    <header>
+                        <h1 class="game-title">
+                            BlackJack
+                        </h1>
+                    </header>
+                    <section>
+                        <header>
+                            <h2 class="game-subtitle">
+                                Developed by kevv
+                            </h2>
+                        </header>
+                        <p class="game-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet doloremque nemo ea laborum possimus quas praesentium delectus eligendi omnis, rerum nisi? Nam neque fugiat assumenda non dolore id atque vel!
+                        </p>
+                    </section>
+                </article>
+                <aside>
+                    <button 
+                        class="rules-button"
+                        title="Más información sobre el juego ..."
+                    >
+                        <i class="font-icon fa-solid fa-ellipsis-vertical">
+                        </i>
+                    </button>
+                </aside>
+
+                <section class="modal">
+                    <div class="modal__content-container">
+                        <article class="modal__content">
+                            <header class="modal__content-header">
+                                <h2 class="rules-title">
+                                    Reglas de BlackJack
+                                </h2>
+                                <button class="modal__close-button">
+                                    <i class="font-icon fa-solid fa-xmark"></i>
+                                </button>
+                            </header>
+                            <p class="rules-paragraph">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus adipisci praesentium soluta mollitia amet omnis expedita quia saepe, sequi eligendi officia sit reprehenderit unde ratione minus, ipsum eos beatae perspiciatis?
+                            </p>
+                        </article>
+                    </div>
+                </section>
+            </section>
+            <hr class="line"/>
         </section>
-        
+
         <section class="game-intro-container">
             <article class="game-intro">
                 <button class="start-button">
@@ -84,7 +123,7 @@
             Todos los derechos reservados - blessddd's Inc
         </h3>
     </footer>
-    <script src="../../src/index.js"></script>
+    <script src="../../src/js/gamePage.js"></script>
     <script src="../../src/js/blackjack.js"></script>
 </body>
 </html>
