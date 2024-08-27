@@ -13,6 +13,8 @@ const randomNumber = (max, min) => {
 }
 
 class Card {
+    static deck = [];
+
     constructor(card = null, player = "user") {
         this.card = card;
         this.player = player;
@@ -20,27 +22,47 @@ class Card {
     
     getCardName = () => this.card;
 
+    getCard = () => {
+        if(Card.deck.length === 0) 
+            Card.createDeck();
+        return Card.deck.pop();
+    }
+
     addCard = (cardElement) => {
         this.player === "dealer" ?  
             dealerDeck.appendChild(cardElement) :
             userDeck.appendChild(cardElement);
     }
 
-    static shuffle = () => {
+    static createDeck = () => {
         const suits = ["Club", "Diamond", "Spade", "Heart"];
-        const cards = ["Jack", "Queen", "King", "Ace"];
-        
-        for(let num = 2; num <= 10; num++) 
-            cards.unshift(num.toString());
-    
-        let suit = suits[randomNumber(0, 3)];
-        let cardNumber = cards[randomNumber(0, 12)];
+        const specialCards = {
+            11: "Jack",
+            12: "Queen",
+            13: "King",
+            14: "Ace"
+        };
+        Card.deck = [];
 
-        return `${cardNumber}-${suit}`;
+        for(let num = 2; num <= 14; num++) { 
+            for(const suit of suits) {
+                const cardValue = specialCards[num] || num.toString();
+                Card.deck.push(`${cardValue}-${suit}`);
+            }
+        }
+
+        Card.shuffleDeck(Card.deck); 
+    }
+
+    static shuffleDeck = (deck) => {
+        for(let last = deck.length - 1; last > 0; last--) {
+            const random = randomNumber(0, last);
+            [deck[last], deck[random]] = [deck[random], deck[last]]; // Swap with destructuring assignment
+        }
     }
 
     createCard = () => {
-        const cardName = this.card || Card.shuffle();
+        const cardName = this.card || this.getCard();
         const [name, suit] = cardName.split('-');
         this.card = cardName;
 
@@ -82,11 +104,9 @@ class Player {
                 this.score += 10;
                 break;
             case "Ace":
-                (
-                    this.score + 11 > 21 ?
+                this.score + 11 > 21 ?
                     this.score++ :
-                    this.score += 11
-                );
+                    this.score += 11;
                 break;
             case "BACK":
                 this.score += 0;
@@ -104,7 +124,7 @@ class Player {
     addCard = (card, player) => {
         const currentCard = new Card(card, player);
         currentCard.createCard();
-        this.deck.push(currentCard.getCardName().split("-")[0]);
+        this.deck.push(currentCard.getCardName().split('-')[0]);
         this.updateScore();
     }
 }
@@ -137,16 +157,18 @@ class BlackJack {
         user.addCard(null, user.typePlayer);
         user.addCard(null, user.typePlayer);
 
-        if(user.getScore() == 21) {
-            alert("Ganó el jugador, obtuvo un BlackJack!!");
-            this.endGame("user");
-        } else if(dealer.getScore() == 21) {
-            alert("Ganó el dealer, obtuvo un BlackJack!!");
-            this.endGame(dealer);
-        } else if(user.getScore() == 21 || dealer.getScore() == 21) {
-            alert("Empate, ambos jugadores obtuvieron BlackJack!!");
-            this.endGame("draw")
-        }
+        setTimeout(() => {
+            if(user.getScore() == 21) {
+                alert("Ganó el jugador, obtuvo un BlackJack!!");
+                this.endGame("user");
+            } else if(dealer.getScore() == 21) {
+                alert("Ganó el dealer, obtuvo un BlackJack!!");
+                this.endGame(dealer);
+            } else if(user.getScore() == 21 || dealer.getScore() == 21) {
+                alert("Empate, ambos jugadores obtuvieron BlackJack!!");
+                this.endGame("draw")
+            }
+        }, 300);
     }
 
     endGame = (winner) => {
@@ -200,8 +222,8 @@ class BlackJack {
                 if(dealerDeck.childElementCount < 2) {
                     dealer.addCard(null, dealer.typePlayer);
                     setTimeout(() => this.determineWinner(), 300);
-                }
-                this.determineWinner();
+                } else 
+                    this.determineWinner();
             } else {
                 dealer.addCard(null, dealer.typePlayer);
                 setTimeout(dealNextCard, 300);
@@ -224,7 +246,7 @@ const startGame = () => {
     game.startGame();
 }
 
-startGame();
+document.querySelector(".start-button").addEventListener("click", () => startGame());
 
 hitButton.addEventListener("click", () => { 
     !game.gameEnded ? 
