@@ -1,47 +1,3 @@
-* {
-    font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight: 500;
-    color: #222;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-body {
-    background-color: #f1f5f9;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
-    margin: 0;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.menu-nav {
-    background-color: #670a0a;
-    padding: 15px 10px;
-}
-.boton-nosotros{
-    color: #fff;
-    font-weight: 700;
-    font-size: 22px;
-    margin: 0px 10px;
-    text-decoration: none;
-    float: right;
-
-}
-.menu-nav__title {
-    color: #fff;
-    font-weight: 700;
-    font-size: 22px;
-    margin: 0px 10px;
-    text-decoration: none;
-}
-
 .games-section, .apps-section {
     display: flex;
     flex-direction: column;
@@ -55,10 +11,9 @@ main {
     gap: 16px;
 }
 
-
 .games-section__title, .apps-section__title {
     font-weight: 700;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .games-section__game, .apps-section__app {
@@ -70,15 +25,14 @@ main {
     height: 400px;
     display: flex;
     flex-direction: column;
-    flex-grow: 2; /* Permite que los elementos crezcan y ocupen el tamaño que sobra en el contenedor */
-    flex-shrink: 2; /* Permite que los elementos se achiquen para que entren en el contenedor */
-    flex-basis: auto; /* Tamaño inicial de los elementos */
+    flex-grow: 2; 
+    flex-shrink: 2;
+    flex-basis: auto; 
     justify-content: flex-end;
     position: relative;
 }
 
 .games-section__game:hover, .apps-section__app:hover {
-    /* width: 290px; */
     box-shadow: 0px 3px 10px #4449;
     transition: 0.2s;
 }
@@ -108,7 +62,7 @@ main {
     padding: 5px 20px;
     padding-left: 20px;
     padding-bottom: 0px;
-    text-shadow: 2px 3px 4px #000;
+    text-shadow: 2px 3px 25px #111;
     color: #f8f8f8;
 }
 
@@ -118,7 +72,7 @@ main {
     padding-bottom: 5px;
     text-overflow: ellipsis;
     color: #f8f8f8;
-    text-shadow: 2px 1px 3px #000;
+    text-shadow: 2px 1px 15px #000;
 }
 
 .game-button, .app-button {
@@ -132,22 +86,10 @@ main {
     font-size: 16px;
     text-align: center;
     text-decoration: none;
-    background-color: #dc2626;
+    background-color: var(--button-bg);
     color: #fff;
 }
 
 .game-button:hover, .app-button:hover{
-    background-color: #ef4444;
-}
-
-.page-footer {
-    flex-shrink: 0;
-    text-align: center;
-    background-color: #670a0a;
-}
-
-.page-footer-title {
-    color: #fff;
-    padding: 10px 0px;
-    font-size: 16px;
+    background-color: var(--button-hover-bg);
 }
