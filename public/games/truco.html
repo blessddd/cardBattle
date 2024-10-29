@@ -1,94 +1,148 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Truco</title>
-    <meta charset="UTF-8">
-    <meta name="author" content="blessddd">
-    <meta name="robots" content="index, follow">
-    <meta name="description" content="Cards games">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../src/css/default-page-style.css">
-    <link rel="stylesheet" href="../../src/css/game-page.css">
-    <link rel="stylesheet" href="../../src/css/games/truco.css">
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-</head>
-<body>
-    <header>
-        <nav class="menu-nav">
-            <a class="menu-nav__title" href="../index.html">
-                ¡¡ Card Battle !!
-            </a>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <section class="game-information">
-                <article class="info-article">
-                    <header>
-                        <h1 class="game-title">
-                            Truco
-                        </h1>
-                    </header>
-                    <section>
+    <head>
+        <title>Truco</title>
+        <meta charset="UTF-8" />
+        <meta name="author" content="blessddd" />
+        <meta name="robots" content="index, follow" />
+        <meta name="description" content="Cards games" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../src/css/default-page-style.css" />
+        <link rel="stylesheet" href="../../src/css/game-page.css" />
+        <link rel="stylesheet" href="../../src/css/games/truco.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        />
+    </head>
+    <body>
+        <header>
+            <nav class="menu-nav">
+                <a class="menu-nav__title" href="../index.html">
+                    ¡¡ Card Battle !!
+                </a>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <section class="game-information">
+                    <article class="info-article">
                         <header>
-                            <h2 class="game-subtitle">
-                                Developed by kevv
-                            </h2>
+                            <h1 class="game-title">
+                                Truco
+                            </h1>
                         </header>
-                        <p class="game-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet doloremque nemo ea laborum possimus quas praesentium delectus eligendi omnis, rerum nisi? Nam neque fugiat assumenda non dolore id atque vel!
-                        </p>
-                    </section>
-                </article>
-                <aside>
-                    <button 
-                        class="rules-button"
-                        title="Más información sobre el juego ..."
-                    >
-                        <i class="font-icon fa-solid fa-ellipsis-vertical">
-                        </i>
-                    </button>
-                </aside>
-
-                <section class="modal">
-                    <div class="modal__content-container">
-                        <article class="modal__content">
-                            <header class="modal__content-header">
-                                <h2 class="rules-title">
-                                    Reglas del Truco 
-                                </h2>
-                                <button class="modal__close-button">
-                                    <i class="font-icon fa-solid fa-xmark"></i>
-                                </button>
+                        <section>
+                            <header>
+                                <h2 class="game-subtitle">Developed by kevv</h2>
                             </header>
-                            <p class="rules-paragraph">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus adipisci praesentium soluta mollitia amet omnis expedita quia saepe, sequi eligendi officia sit reprehenderit unde ratione minus, ipsum eos beatae perspiciatis?
+                            <p class="game-description">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Eveniet doloremque nemo ea
+                                laborum possimus quas praesentium delectus
+                                eligendi omnis, rerum nisi? Nam neque fugiat
+                                assumenda non dolore id atque vel!
                             </p>
-                        </article>
-                    </div>
+                        </section>
+                    </article>
+                    <aside>
+                        <button
+                            class="rules-button"
+                            title="Más información sobre el juego ..."
+                        >
+                            <i class="font-icon fa-solid fa-ellipsis-vertical">
+                            </i>
+                        </button>
+                    </aside>
+                    <section class="modal">
+                        <div class="modal__content-container">
+                            <article class="modal__content">
+                                <header class="modal__content-header">
+                                    <h2 class="rules-title">
+                                        Reglas del Truco
+                                    </h2>
+                                    <button class="modal__close-button">
+                                        <i class="font-icon fa-solid fa-xmark">
+                                        </i>
+                                    </button>
+                                </header>
+                                <p class="rules-paragraph">
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Necessitatibus adipisci
+                                    praesentium soluta mollitia amet omnis
+                                    expedita quia saepe, sequi eligendi officia
+                                    sit reprehenderit unde ratione minus, ipsum
+                                    eos beatae perspiciatis?
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+                </section>
+
+                <hr class="line" />
+            </section>
+
+            <section class="game-intro-container">
+                <article class="game-intro">
+                    <button class="start-button">
+                        Jugar
+                    </button>
+                </article>
+            </section>
+            
+            <section class="game-section-container">
+                <section class="game-section">
+                    <aside class="bot-container">
+                        <header>
+                            <h2>
+                                Bot
+                            </h2>
+                            <span class="bot-dialog dialog">
+                            </span> 
+                        </header>
+                        <div class="dealer-deck deck">
+                        </div>
+                        <footer>
+                            <span class="game-counter dealer-counter">
+                            </span>
+                        </footer>
+                    </aside>
+                    <aside class="deck-container">
+                        <header>
+                            <h2>
+                                Jugador
+                            </h2>
+                            <span class="user-dialog dialog">Hola</span>
+                        </header>
+                        <div class="user-deck deck">
+                        </div>
+                        <footer>
+                            <span class="game-counter user-counter">
+                            </span>
+                        </footer>
+                    </aside>
+                </section>
+                <section class="game-buttons">
+                    <button class="game-button hit">
+                        Envido
+                    </button>
+                    <button class="game-button stand">
+                        Truco
+                    </button>
+                    <button class="game-button play-again" type="button">
+                        Ir al mazo
+                    </button>
                 </section>
             </section>
-            <hr class="line"/>
-        </section>
 
-        <section class="game-intro-container">
-            <article class="game-intro">
-                <button class="start-button">
-                    Jugar
-                </button>
-            </article>
-        </section>
-        <section></section>
-    </main>
-    <footer class="page-footer">
-        <h3 class="page-footer-title">
-            Todos los derechos reservados - blessddd's Inc
-        </h3>
-    </footer>
-    <script src="../../src/js/gamePage.js"></script>
-    
-</body>
+            <section></section>
+        </main>
+        <footer class="page-footer">
+            <h3 class="page-footer-title">
+                Todos los derechos reservados - blessddd's Inc
+            </h3>
+        </footer>
+        <script src="../../src/js/truco.js"></script>
+        <script src="../../src/js/gamePage.js"></script>
+    </body>
 </html>
