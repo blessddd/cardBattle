@@ -92,27 +92,61 @@
             
             <section class="game-section-container">
                 <section class="game-section">
-                    <aside class="bot-container">
+                    <section class="modal-message">
+                        <div class="modal-message__content-container">
+                            <article class="modal-message__content">
+                                <header class="modal-message__content-header">
+                                    <h2 class="modal-message__title">
+                                    </h2>
+                                    <span class="modal-message__message-stage">
+                                    </span>
+                                    <div class="modal-message__messages">
+                                        <div>
+                                            <span class="modal-message__message-winner bot-envido-score"></span>
+                                            <span class="modal-message__message-winner player-envido-score"></span>
+                                        </div>
+                                        <span class="modal-message__message-winner envido-message"></span>
+                                    </div>
+                                </header>
+                                <div class="modal-message__buttons">
+                                    <button class="game-button wanted">
+                                        Quiero
+                                    </button>
+                                    <button class="game-button rejected">
+                                        No quiero
+                                    </button>
+                                    <button class="game-button raise">
+                                        Resubir apuesta
+                                    </button>
+                                    <button class="game-button close">
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                    <aside class="deck-container">
                         <header>
                             <h2>
                                 Bot
                             </h2>
-                            <span class="bot-dialog dialog">
-                            </span> 
                         </header>
-                        <div class="dealer-deck deck">
+                        <div class="bot-deck deck">
                         </div>
                         <footer>
-                            <span class="game-counter dealer-counter">
+                            <span class="game-counter bot-counter">
                             </span>
                         </footer>
+                    </aside>
+                    <aside class="mesa">
+                        <div class="dropped-cards bot-dropped-cards"></div>
+                        <div class="dropped-cards user-dropped-cards"></div>
                     </aside>
                     <aside class="deck-container">
                         <header>
                             <h2>
                                 Jugador
                             </h2>
-                            <span class="user-dialog dialog">Hola</span>
                         </header>
                         <div class="user-deck deck">
                         </div>
@@ -123,12 +157,28 @@
                     </aside>
                 </section>
                 <section class="game-buttons">
-                    <button class="game-button hit">
-                        Envido
-                    </button>
-                    <button class="game-button stand">
-                        Truco
-                    </button>
+                    <div>
+                        <button class="game-button envido">
+                            Envido
+                        </button>
+                        <button class="game-button real-envido">
+                            Real Envido
+                        </button>
+                        <button class="game-button falta-envido">
+                            Falta Envido
+                        </button>
+                    </div>
+                    <div>
+                        <button class="game-button truco">
+                            Truco
+                        </button>
+                        <button class="game-button retruco">
+                            Retruco
+                        </button>
+                        <button class="game-button vale-cuatro">
+                            Vale cuatro
+                        </button>
+                    </div>
                     <button class="game-button play-again" type="button">
                         Ir al mazo
                     </button>
